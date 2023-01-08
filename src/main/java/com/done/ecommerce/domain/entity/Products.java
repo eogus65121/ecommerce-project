@@ -36,12 +36,14 @@ public class Products {
     private String remark;          // 비고
 
     @Builder
-    public Products(String name, String description, int price, LocalDate createdDt, String createUsrId){
+    public Products(String name, String description, int price, LocalDate createdDt, String createUsrId, int productGroupId, String remark){
         this.name = name;
         this.description = description;
         this.price = price;
         this.createdDt = createdDt;
         this.createUsrId = createUsrId;
+        this.productGroupId = productGroupId;
+        this.remark = remark;
     }
 
 }
