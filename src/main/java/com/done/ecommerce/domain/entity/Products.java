@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Getter
+@Getter                 // entity에는 @setter를 추가하지 않는다
 @NoArgsConstructor      // 기본 생성자 자동 추가
 @Entity
 public class Products {
