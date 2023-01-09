@@ -46,4 +46,24 @@ public class ProductsRepositoryTest {
         assertThat(product.getName()).isEqualTo(name);
         assertThat(product.getDescription()).isEqualTo(description);
     }
+
+    @Test
+    public void 전체상품_불러오기(){
+        //given
+        for(int i = 0; i < 5; i++){
+            productsRepository.save(Products.builder()
+                    .name("name" + i)
+                    .description("description" + i)
+                    .price(1000 + i)
+                    .createdDt(LocalDate.of(2022,01,07))
+                    .createUsrId("admin" + i)
+                    .build());
+        }
+
+        //when
+        List<Products> rtnList = productsRepository.findAll();
+
+        //then
+        assertThat(rtnList.size()).isEqualTo(5);
+    }
 }
