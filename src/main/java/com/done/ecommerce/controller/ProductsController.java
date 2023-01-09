@@ -1,21 +1,19 @@
 package com.done.ecommerce.controller;
 
-import com.done.ecommerce.domain.repository.ProductsRepository;
+import com.done.ecommerce.domain.entity.Products;
 import com.done.ecommerce.dto.products.ProductsAddDto;
 import com.done.ecommerce.service.ProductsService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping(value="products")
 public class ProductsController {
 
     private final ProductsService productsService;
@@ -34,6 +32,16 @@ public class ProductsController {
             return HttpStatus.BAD_REQUEST;
         }
         return HttpStatus.OK;
+    }
+
+    /**
+     * 전체 상품 조회
+     * @return
+     */
+    @GetMapping(value = "/select-products")
+    public ResponseEntity<List<Products>> selectProducts(){
+        List<Products> rtnList = productsService.selectAllProducts();
+        return new ResponseEntity<>(rtnList, HttpStatus.OK);
     }
 
 }
