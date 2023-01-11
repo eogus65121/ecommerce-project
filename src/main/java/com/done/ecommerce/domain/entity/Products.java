@@ -26,23 +26,23 @@ public class Products {
     private int price;      // 금액
 
     @Column(nullable = false)
-    private LocalDate createdDt;        // 등록일자
+    private LocalDate created_dt;        // 등록일자
 
     @Column(nullable = false)
-    private String createUsrId;         // 등록자
+    private String create_usr_id;         // 등록자
 
-    private int productGroupId;        // 상품 그룹 코드
+    private int group_id;        // 상품 그룹 코드
 
     private String remark;          // 비고
 
     @Builder
-    public Products(String name, String description, int price, LocalDate createdDt, String createUsrId, int productGroupId, String remark){
+    public Products(String name, String description, int price, LocalDate created_dt, String create_usr_id, int group_id, String remark){
         this.name = name;
         this.description = description;
         this.price = price;
-        this.createdDt = createdDt;
-        this.createUsrId = createUsrId;
-        this.productGroupId = productGroupId;
+        this.created_dt = created_dt;
+        this.create_usr_id = create_usr_id;
+        this.group_id = group_id;
         this.remark = remark;
     }
 
