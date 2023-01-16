@@ -1,4 +1,4 @@
-package com.done.ecommerce.dto.user;
+package com.done.ecommerce.dto.users;
 
 public enum Role {
     ADMIN("관리자", 100)

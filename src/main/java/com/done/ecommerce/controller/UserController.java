@@ -1,21 +1,23 @@
 package com.done.ecommerce.controller;
 
-import com.done.ecommerce.dto.user.UserDto;
+import com.done.ecommerce.dto.users.LoginReq;
 import com.done.ecommerce.service.UserService;
+import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value="user")
+@Slf4j
+@RequestMapping(value="users")
 public class UserController {
 
     private final UserService userService;
@@ -24,13 +26,14 @@ public class UserController {
      * 사용자 로그인
      * @param reqDto
      */
-    @GetMapping(value="/loginView")
-    public ResponseEntity<?> loginUser(@RequestBody UserDto reqDto){
-        if(userService.loginUser(reqDto) == 0)
+    @PostMapping(value="/login")
+    public ResponseEntity<?> loginUser(@RequestBody @Valid LoginReq reqDto){
+        if(userService.loginUser(reqDto) == 0){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create("/index"));  // main 화면
+        headers.setLocation(URI.create("/home"));  // main 화면
 
         // 로그인 성공 시 header의 setLocation으로 리다이렉트
         return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);

@@ -1,4 +1,4 @@
-package com.done.ecommerce.dto.user;
+package com.done.ecommerce.dto.users;
 
 import lombok.Builder;
 import lombok.Getter;
