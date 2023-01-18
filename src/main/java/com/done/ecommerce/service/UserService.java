@@ -2,6 +2,7 @@ package com.done.ecommerce.service;
 
 import com.done.ecommerce.domain.repository.UserRepository;
 import com.done.ecommerce.dto.users.LoginReq;
+import com.done.ecommerce.dto.users.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public Long loginUser(LoginReq reqDto){
-        return userRepository.selectLoginUser(reqDto.getUserId(), reqDto.getUserPwd());
+    public UserDto loginUser(LoginReq reqDto){
+        return userRepository.findByIdAndPwd(reqDto.getId(), reqDto.getPwd());
     }
 }
