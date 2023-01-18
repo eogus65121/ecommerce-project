@@ -1,15 +1,22 @@
 package com.done.ecommerce.dto.users;
 
-public enum Role {
-    ADMIN("관리자", 100)
-    ,EMPL("직원", 200)
-    ,CUST("고객", 300);
+import java.util.Arrays;
+import java.util.Optional;
 
-    private String roleName;
+public enum Role {
+    ADMIN( 100)
+    ,EMPL( 200)
+    ,CUST( 300)
+    ;
+
     private int code;
 
-    Role(String roleName, int code){
-        this.roleName = roleName;
-        this.code = code;
+    Role(int code){this.code = code;}
+
+    // 코드를 사용하여 role name 출력
+    public static String findRole(int reqCode){
+        return Arrays.stream(Role.values())
+                .filter(o -> o.code == reqCode)
+                .findAny().get().name();
     }
 }
