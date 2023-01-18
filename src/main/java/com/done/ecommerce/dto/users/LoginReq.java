@@ -9,7 +9,9 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class LoginReq {
     @NotBlank
-    private String userId;
+    private String id;
     @NotBlank
-    private String userPwd;
+    private String pwd;
+
+
 }

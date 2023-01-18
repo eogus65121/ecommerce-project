@@ -1,19 +1,17 @@
 package com.done.ecommerce.dto.users;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter @Setter
 @Builder
 @ToString
+@AllArgsConstructor
 public class UserDto {
-    private Long id;
+    private Long idx;
     private String name;
-    private String userId;
-    private String userPwd;
+    private String id;
+    private String pwd;
     private int age;
     private String phone;
-    private String role;
+    private int role;
 }
