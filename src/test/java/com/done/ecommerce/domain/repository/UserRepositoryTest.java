@@ -23,6 +23,7 @@ public class UserRepositoryTest {
     // 모든 테스트 이전 테스트 데이터 셋팅
     @BeforeEach
     public void saveData(){
+        //given
         for(int i = 1; i < 11; i++){
             userRepository.save(Users.builder()
                     .name("name" + i)

@@ -23,6 +23,7 @@ public class SessionUtil {
         return session.getAttribute(LOGIN_USER_ROLE).toString();
     }
 
+    // Enum을 사용하여 로그인 사용자의 Role을 세션에 저장
     public static void setLoginUserRole(HttpSession session, int role){
         session.setAttribute(LOGIN_USER_ROLE, Role.findRole(role));
     }
