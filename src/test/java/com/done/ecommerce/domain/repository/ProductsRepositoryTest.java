@@ -86,7 +86,7 @@ public class ProductsRepositoryTest {
         ProductIdProjectionInterface rstDto = productsRepository.selectProductDetl(id);
 
         // then
-        assertThat(rstDto.getId()).isEqualTo(id);
+        assertThat(rstDto.getIdx()).isEqualTo(id);
         assertThat(rstDto.getDescription()).isEqualTo("description2");
         assertThat(rstDto.getName()).isEqualTo("name2");
         assertThat(rstDto.getPrice()).isEqualTo(10002);
