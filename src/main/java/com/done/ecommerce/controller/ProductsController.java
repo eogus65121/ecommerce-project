@@ -30,9 +30,9 @@ public class ProductsController {
     /**
      * 특정 상품 조회
      */
-    @GetMapping(value="/productDetl/{id}")
-    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("id") Long id){
-        ProductIdProjectionInterface response = productsService.selectProductDetl(id);
+    @GetMapping(value="/productDetl/{idx}")
+    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("idx") Long idx){
+        ProductIdProjectionInterface response = productsService.selectProductDetl(idx);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

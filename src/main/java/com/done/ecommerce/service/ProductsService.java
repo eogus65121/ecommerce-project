@@ -22,8 +22,8 @@ public class ProductsService {
     }
 
     // select product detail
-    public ProductIdProjectionInterface selectProductDetl(Long id){
-        return productsRepository.selectProductDetl(id);
+    public ProductIdProjectionInterface selectProductDetl(Long idx){
+        return productsRepository.selectProductDetl(idx);
     }
 
     // new product save

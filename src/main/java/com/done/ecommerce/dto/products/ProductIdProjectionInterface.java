@@ -3,7 +3,7 @@ package com.done.ecommerce.dto.products;
 import java.time.LocalDate;
 
 public interface ProductIdProjectionInterface {
-    Long getId();
+    Long getIdx();
     String getName();
     String getDescription();
     int getPrice();

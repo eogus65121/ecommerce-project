@@ -1,5 +1,6 @@
 package com.done.ecommerce.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,13 @@ import java.time.LocalDate;
 
 @Getter                 // entity에는 @setter를 추가하지 않는다
 @NoArgsConstructor      // 기본 생성자 자동 추가
+@AllArgsConstructor
 @Entity
 public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // auto increment
-    private Long id;
+    private Long idx;
 
     @Column(length = 500, nullable = false)
     private String name;        // 상품 이름
