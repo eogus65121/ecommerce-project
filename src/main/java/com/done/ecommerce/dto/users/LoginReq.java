@@ -12,6 +12,4 @@ public class LoginReq {
     private String id;
     @NotBlank
     private String pwd;
-
-
 }
