@@ -16,16 +16,16 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idx;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private String id;
+    private String user_id;
 
     @Column(nullable = false)
-    private String pwd;
+    private String user_pwd;
 
     private int age;
 
@@ -35,10 +35,10 @@ public class Users {
     private int role;
 
     @Builder
-    public Users(String name, String id, String pwd, int role){
+    public Users(String name, String user_id, String user_pwd, int role){
         this.name = name;
-        this.id = id;
-        this.pwd = pwd;
+        this.user_id = user_id;
+        this.user_pwd = user_pwd;
         this.role = role;
     }
 }
