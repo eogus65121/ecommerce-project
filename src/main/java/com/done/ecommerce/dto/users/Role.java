@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public enum Role {
     ADMIN( 100)
-    ,EMPL( 200)
-    ,CUST( 300)
+    ,EMPLOYEE( 200)
+    ,CUSTOMER( 300)
+    ,EMPTY(0)
     ;
 
     private int code;
