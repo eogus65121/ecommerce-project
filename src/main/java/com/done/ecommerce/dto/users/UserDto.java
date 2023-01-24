@@ -7,10 +7,10 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 public class UserDto {
-    private Long idx;
+    private Long id;
     private String name;
-    private String id;
-    private String pwd;
+    private String userId;
+    private String userPwd;
     private int age;
     private String phone;
     private int role;
