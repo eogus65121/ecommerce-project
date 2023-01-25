@@ -86,9 +86,23 @@ public class ProductsRepositoryTest {
         ProductIdProjectionInterface rstDto = productsRepository.selectProductDetl(id);
 
         // then
-        assertThat(rstDto.getIdx()).isEqualTo(id);
+        assertThat(rstDto.getId()).isEqualTo(id);
         assertThat(rstDto.getDescription()).isEqualTo("description2");
         assertThat(rstDto.getName()).isEqualTo("name2");
         assertThat(rstDto.getPrice()).isEqualTo(10002);
+    }
+
+    @Test
+    public void 상품_삭제(){
+        //given
+        Long id = 3l;
+        int currentSize = productsRepository.findAll().size();
+
+        //when
+        productsRepository.deleteById(id);
+        int sizeAfterDelete = productsRepository.findAll().size();
+
+        //then
+        assertThat(sizeAfterDelete).isEqualTo(currentSize-1);
     }
 }
