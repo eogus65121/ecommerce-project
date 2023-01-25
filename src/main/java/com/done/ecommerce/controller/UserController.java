@@ -40,7 +40,7 @@ public class UserController {
         headers.setLocation(URI.create("/index"));  // main 화면
 
         // 세션에 id, role 저장
-        SessionUtil.setLoginUserId(session, userDto.getId());
+        SessionUtil.setLoginUserId(session, userDto.getUserId());
         SessionUtil.setLoginUserRole(session, userDto.getRole());
 
         // 로그인 성공 시 header의 setLocation으로 리다이렉트
