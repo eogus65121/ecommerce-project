@@ -27,8 +27,8 @@ public class UserRepositoryTest {
         for(int i = 1; i < 11; i++){
             userRepository.save(Users.builder()
                     .name("name" + i)
-                    .id("id" + i)
-                    .pwd("pwd" + i)
+                    .userId("id" + i)
+                    .userPwd("pwd" + i)
                     .role(100)
                     .build());
         }
@@ -41,11 +41,11 @@ public class UserRepositoryTest {
         String pwd = "pwd3";
 
         // when
-        UserDto response = userRepository.findByIdAndPwd(id, pwd);
+        UserDto response = userRepository.findByUserIdAndUserPwd(id, pwd);
 
         // then
-        assertThat(response.getPwd()).isEqualTo(pwd);
-        assertThat(response.getId()).isEqualTo(id);
+        assertThat(response.getUserPwd()).isEqualTo(pwd);
+        assertThat(response.getUserId()).isEqualTo(id);
         assertThat(response.getName()).isEqualTo("name3");
         assertThat(response.getRole()).isEqualTo(100);
     }
