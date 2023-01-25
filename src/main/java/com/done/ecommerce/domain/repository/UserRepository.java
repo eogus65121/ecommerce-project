@@ -11,9 +11,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<Users, Long>{
 
     // id와 pwd 일치 여부로 로그인 check
-    UserDto findByUser_idAndUser_pwd(String id, String pwd);
+    UserDto findByUserIdAndUserPwd(String userId, String userPwd);
 
-    Optional<Users> findByUser_id(String id);
+    Optional<Users> findByUserId(String userId);
 
-    void merge(Users user) throws Exception;
 }

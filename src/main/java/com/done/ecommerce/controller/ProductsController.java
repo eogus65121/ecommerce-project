@@ -30,9 +30,9 @@ public class ProductsController {
     /**
      * 특정 상품 조회
      */
-    @GetMapping(value="/productDetl/{idx}")
-    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("idx") Long idx){
-        ProductIdProjectionInterface response = productsService.selectProductDetl(idx);
+    @GetMapping(value="/productDetl/{id}")
+    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("id") Long id){
+        ProductIdProjectionInterface response = productsService.selectProductDetl(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -47,6 +47,20 @@ public class ProductsController {
         try{
             productsService.saveNewProduct(requestDto);
         }catch (Exception e){
+            e.printStackTrace();
+            return HttpStatus.BAD_REQUEST;
+        }
+        return HttpStatus.OK;
+    }
+
+    /**
+     * 상품 삭제
+     * @param
+     */
+    @DeleteMapping HttpStatus deleteProduct(@RequestParam("id") Long id){
+        try{
+            productsService.deleteProduct(id);
+        }catch(Exception e){
             e.printStackTrace();
             return HttpStatus.BAD_REQUEST;
         }

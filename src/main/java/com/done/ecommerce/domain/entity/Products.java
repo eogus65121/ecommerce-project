@@ -16,7 +16,7 @@ public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // auto increment
-    private Long idx;
+    private Long id;
 
     @Column(length = 500, nullable = false)
     private String name;        // 상품 이름

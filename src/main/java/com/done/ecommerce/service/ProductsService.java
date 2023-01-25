@@ -4,9 +4,11 @@ import com.done.ecommerce.domain.entity.Products;
 import com.done.ecommerce.domain.repository.ProductsRepository;
 import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
 import com.done.ecommerce.dto.products.ProductsAddDto;
+import com.done.ecommerce.utils.SessionUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
 public class ProductsService {
 
     private final ProductsRepository productsRepository;
+    private final HttpSession session;
 
     // select all products
     public List<Products> selectAllProducts(){
@@ -22,17 +25,20 @@ public class ProductsService {
     }
 
     // select product detail
-    public ProductIdProjectionInterface selectProductDetl(Long idx){
-        return productsRepository.selectProductDetl(idx);
+    public ProductIdProjectionInterface selectProductDetl(Long id){
+        return productsRepository.selectProductDetl(id);
     }
 
     // new product save
     public void saveNewProduct(ProductsAddDto addDto){
-        // todo session data
         addDto.setCreatedDt(LocalDate.now());
-        addDto.setCreateUsrId("admin");
+        addDto.setCreateUsrId(SessionUtil.getLoginUserId(session));
         // save
         productsRepository.save(addDto.toEntity());
+    }
+
+    public void deleteProduct(Long id){
+        productsRepository.deleteById(id);
     }
 
 }

@@ -13,6 +13,6 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserDto loginUser(LoginReq reqDto){
-        return userRepository.findByUser_idAndUser_pwd(reqDto.getUserId(), reqDto.getUserPwd());
+        return userRepository.findByUserIdAndUserPwd(reqDto.getUserId(), reqDto.getUserPwd());
     }
 }

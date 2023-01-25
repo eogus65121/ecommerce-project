@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface ProductsRepository extends JpaRepository<Products, Long> {
 
     // select product detail
-    @Query(value = "select pd.idx AS id, pd.name AS name, pd.description AS description, pd.price AS price, pd.created_dt AS createdDt" +
-            ", pd.create_usr_id AS createUsrId, pd.group_id AS groupId, pd.remark AS remark from Products AS pd where pd.idx = :idx")
-    ProductIdProjectionInterface selectProductDetl(@Param(value = "idx") Long idx);
+    @Query(value = "select pd.id AS id, pd.name AS name, pd.description AS description, pd.price AS price, pd.created_dt AS createdDt" +
+            ", pd.create_usr_id AS createUsrId, pd.group_id AS groupId, pd.remark AS remark from Products AS pd where pd.id = :id")
+    ProductIdProjectionInterface selectProductDetl(@Param(value = "id") Long id);
 
 }

@@ -22,10 +22,10 @@ public class Users {
     private String name;
 
     @Column(nullable = false)
-    private String user_id;
+    private String userId;
 
     @Column(nullable = false)
-    private String user_pwd;
+    private String userPwd;
 
     private int age;
 
@@ -35,10 +35,10 @@ public class Users {
     private int role;
 
     @Builder
-    public Users(String name, String user_id, String user_pwd, int role){
+    public Users(String name, String userId, String userPwd, int role){
         this.name = name;
-        this.user_id = user_id;
-        this.user_pwd = user_pwd;
+        this.userId = userId;
+        this.userPwd = userPwd;
         this.role = role;
     }
 }
