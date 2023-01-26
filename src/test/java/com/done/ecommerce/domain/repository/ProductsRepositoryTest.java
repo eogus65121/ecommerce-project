@@ -30,8 +30,8 @@ public class ProductsRepositoryTest {
                     .name("name" + i)
                     .description("description" + i)
                     .price(10000 + i)
-                    .created_dt(LocalDate.of(2022,01,07))
-                    .create_usr_id("admin" + i)
+                    .createdDt(LocalDate.of(2022,01,07))
+                    .createUsrId("admin" + i)
                     .build());
         }
     }
@@ -51,8 +51,8 @@ public class ProductsRepositoryTest {
                 .name(name)
                 .description(description)
                 .price(price)
-                .created_dt(createDt)
-                .create_usr_id(createUsrId)
+                .createdDt(createDt)
+                .createUsrId(createUsrId)
                 .build());
 
         // when
