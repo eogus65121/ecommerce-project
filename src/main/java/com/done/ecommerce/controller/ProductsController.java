@@ -44,7 +44,7 @@ public class ProductsController {
      * @return
      */
     @GetMapping(value = "/select-products")
-    public ResponseEntity<List<Products>> selectProducts(){
+    public ResponseEntity<List<Products>> selectProducts() throws Exception{
         List<Products> rtnList = productsService.selectAllProducts();
         return new ResponseEntity<>(rtnList, HttpStatus.OK);
     }
@@ -53,7 +53,7 @@ public class ProductsController {
      * 특정 상품 조회
      */
     @GetMapping(value="/productDetl/{id}")
-    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("id") Long id){
+    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("id") Long id) throws Exception{
         ProductIdProjectionInterface response = productsService.selectProductDetl(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -65,7 +65,7 @@ public class ProductsController {
      * @return
      */
     @PostMapping(value = "/add-product")
-    public HttpStatus addProduct(@RequestBody ProductsAddDto requestDto){
+    public HttpStatus addProduct(@RequestBody ProductsAddDto requestDto) throws Exception{
         try{
             productsService.saveNewProduct(requestDto);
         }catch (Exception e){
@@ -79,7 +79,7 @@ public class ProductsController {
      * 상품 삭제
      * @param
      */
-    @DeleteMapping HttpStatus deleteProduct(@RequestParam("id") Long id){
+    @DeleteMapping HttpStatus deleteProduct(@RequestParam("id") Long id) throws Exception{
         try{
             productsService.deleteProduct(id);
         }catch(Exception e){

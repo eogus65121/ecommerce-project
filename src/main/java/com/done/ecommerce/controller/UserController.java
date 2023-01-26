@@ -28,7 +28,7 @@ public class UserController {
      * @param reqDto
      */
     @PostMapping(value="/login")
-    public ResponseEntity<?> loginUser(@RequestBody @Valid LoginReq reqDto, HttpSession session){
+    public ResponseEntity<?> loginUser(@RequestBody @Valid LoginReq reqDto, HttpSession session) throws Exception{
         UserDto userDto = userService.loginUser(reqDto);
         // 로그인 실패
         if(userDto == null){
