@@ -41,4 +41,6 @@ public class ProductsService {
         productsRepository.deleteById(id);
     }
 
+    public void productDataSet(Products products) {productsRepository.save(products);}
+
 }

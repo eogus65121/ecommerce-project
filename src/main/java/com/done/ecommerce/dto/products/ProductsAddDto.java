@@ -29,10 +29,10 @@ public class ProductsAddDto{
                 .name(name)
                 .description(description)
                 .price(price)
-                .group_id(productGroupId)
+                .groupId(productGroupId)
                 .remark(remark)
-                .create_usr_id(createUsrId)
-                .created_dt(createdDt)
+                .createUsrId(createUsrId)
+                .createdDt(createdDt)
                 .build();
     }
 }

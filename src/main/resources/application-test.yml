@@ -1,0 +1,22 @@
+
+# H2 DB setting
+spring:
+  h2:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test;MODE=MYSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    hibernate:
+      naming:
+        # Entity클래스 안에 컬럼명을 CamelCase로 지정한 경우 native query 사용 시 snake 형태로 쿼리가 생성되는 에러에 대한 설정 변경
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: create-drop
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+

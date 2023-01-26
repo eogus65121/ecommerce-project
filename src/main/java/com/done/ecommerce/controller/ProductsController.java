@@ -5,9 +5,12 @@ import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
 import com.done.ecommerce.dto.products.ProductsAddDto;
 import com.done.ecommerce.service.ProductsService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -16,6 +19,25 @@ import java.util.List;
 public class ProductsController {
 
     private final ProductsService productsService;
+
+    /**
+     * h2 db 테스트를 위한 데이터 셋팅
+     */
+    @GetMapping("/setProduct")
+    public HttpStatus setData(){
+        for(int i = 1; i < 100; i++){
+            productsService.productDataSet(Products.builder()
+                    .name("name" + i)
+                    .description("description" + i)
+                    .price(10000 + i)
+                    .createdDt(LocalDate.now())
+                    .createUsrId("admin" + i)
+                    .groupId(1)
+                    .remark("remark" + i)
+                    .build());
+        }
+        return HttpStatus.OK;
+    }
 
     /**
      * 전체 상품 조회
