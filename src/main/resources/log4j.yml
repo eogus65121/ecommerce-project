@@ -1,0 +1,8 @@
+log4j:
+  # Global Logging configuration
+  rootLogger: INFO
+  # stdout Appender
+  appender:
+    stdout: org.apache.log4j.ConsoleAppender
+      layout: org.apache.log4j.PatternLayout
+        :ConversionPattern: [%5] %d{hh\:mm s} (%F\:%L) %c{1}.%M \: %m%n
