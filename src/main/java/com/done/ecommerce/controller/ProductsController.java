@@ -5,7 +5,6 @@ import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
 import com.done.ecommerce.dto.products.ProductsAddDto;
 import com.done.ecommerce.service.ProductsService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +43,7 @@ public class ProductsController {
      * @return
      */
     @GetMapping(value = "/select-products")
-    public ResponseEntity<List<Products>> selectProducts() throws Exception{
+    public ResponseEntity<List<Products>> selectProducts() {
         List<Products> rtnList = productsService.selectAllProducts();
         return new ResponseEntity<>(rtnList, HttpStatus.OK);
     }
@@ -53,7 +52,7 @@ public class ProductsController {
      * 특정 상품 조회
      */
     @GetMapping(value="/productDetl/{id}")
-    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("id") Long id) throws Exception{
+    public ResponseEntity<ProductIdProjectionInterface> selectProductDetl(@PathVariable("id") Long id) {
         ProductIdProjectionInterface response = productsService.selectProductDetl(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -65,7 +64,7 @@ public class ProductsController {
      * @return
      */
     @PostMapping(value = "/add-product")
-    public HttpStatus addProduct(@RequestBody ProductsAddDto requestDto) throws Exception{
+    public HttpStatus addProduct(@RequestBody ProductsAddDto requestDto) {
         try{
             productsService.saveNewProduct(requestDto);
         }catch (Exception e){
@@ -79,7 +78,7 @@ public class ProductsController {
      * 상품 삭제
      * @param
      */
-    @DeleteMapping HttpStatus deleteProduct(@RequestParam("id") Long id) throws Exception{
+    @DeleteMapping HttpStatus deleteProduct(@RequestParam("id") Long id) {
         try{
             productsService.deleteProduct(id);
         }catch(Exception e){
