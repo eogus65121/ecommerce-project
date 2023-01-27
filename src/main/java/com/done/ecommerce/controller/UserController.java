@@ -71,7 +71,7 @@ public class UserController {
     /**
      * 로그아웃
      */
-    @GetMapping (value="/logout")
+    @PostMapping (value="/logout")
     public HttpStatus logout(HttpSession session){
         SessionUtil.sessionClear(session);
         // 로그아웃 시 홈 가화면으로 이동
