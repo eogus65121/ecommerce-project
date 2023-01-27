@@ -20,24 +20,24 @@ public class ProductsService {
     private final HttpSession session;
 
     // select all products
-    public List<Products> selectAllProducts() throws Exception{
+    public List<Products> selectAllProducts() {
         return productsRepository.findAll();
     }
 
     // select product detail
-    public ProductIdProjectionInterface selectProductDetl(Long id) throws Exception{
+    public ProductIdProjectionInterface selectProductDetl(Long id) {
         return productsRepository.selectProductDetl(id);
     }
 
     // new product save
-    public void saveNewProduct(ProductsAddDto addDto) throws Exception{
+    public void saveNewProduct(ProductsAddDto addDto) {
         addDto.setCreatedDt(LocalDate.now());
         addDto.setCreateUsrId(SessionUtil.getLoginUserId(session));
         // save
         productsRepository.save(addDto.toEntity());
     }
 
-    public void deleteProduct(Long id) throws Exception {
+    public void deleteProduct(Long id)  {
         productsRepository.deleteById(id);
     }
 

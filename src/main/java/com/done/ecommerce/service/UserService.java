@@ -12,7 +12,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserDto loginUser(LoginReq reqDto) throws Exception{
+    public UserDto loginUser(LoginReq reqDto) {
         return userRepository.findByUserIdAndUserPwd(reqDto.getUserId(), reqDto.getUserPwd());
     }
 }
