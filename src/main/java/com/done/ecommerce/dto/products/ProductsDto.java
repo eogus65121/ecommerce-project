@@ -1,21 +1,16 @@
 package com.done.ecommerce.dto.products;
 
-가
-import com.done.ecommerce.domain.entity.Products;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonAutoDetect
-public class ProductsDto {
+public class ProductsDto implements Serializable {
     private Long id;
     private String name;
     private String description;
