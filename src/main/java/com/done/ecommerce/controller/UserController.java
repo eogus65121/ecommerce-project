@@ -6,6 +6,7 @@ import com.done.ecommerce.service.UserService;
 import com.done.ecommerce.utils.SessionUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,6 +72,7 @@ public class UserController {
     /**
      * 로그아웃
      */
+    @CacheEvict(value="LOGOUT_DELETE_CAHCE")
     @PostMapping (value="/logout")
     public HttpStatus logout(HttpSession session){
         SessionUtil.sessionClear(session);
