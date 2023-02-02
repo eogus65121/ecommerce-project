@@ -1,17 +1,18 @@
 package com.done.ecommerce.controller;
 
-import com.done.ecommerce.domain.entity.Products;
 import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
 import com.done.ecommerce.dto.products.ProductsAddDto;
+import com.done.ecommerce.dto.products.ProductsDto;
 import com.done.ecommerce.service.ProductsService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value="products")
@@ -20,32 +21,12 @@ public class ProductsController {
     private final ProductsService productsService;
 
     /**
-     * h2 db 테스트를 위한 데이터 셋팅
-     */
-    @GetMapping("/setProduct")
-    public HttpStatus setData(){
-        for(int i = 1; i < 100; i++){
-            productsService.productDataSet(Products.builder()
-                    .name("name" + i)
-                    .description("description" + i)
-                    .price(10000 + i)
-                    .createdDt(LocalDate.now())
-                    .createUsrId("admin" + i)
-                    .groupId(1)
-                    .remark("remark" + i)
-                    .build());
-        }
-        return HttpStatus.OK;
-    }
-
-    /**
-     * 전체 상품 조회
+     * 전체 상품 조회 캐싱 적용
      * @return
      */
     @GetMapping(value = "/select-products")
-    public ResponseEntity<List<Products>> selectProducts() {
-        List<Products> rtnList = productsService.selectAllProducts();
-        return new ResponseEntity<>(rtnList, HttpStatus.OK);
+    public List<ProductsDto> selectProducts() {
+        return productsService.selectAllProducts();
     }
 
     /**
