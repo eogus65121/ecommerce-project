@@ -3,16 +3,22 @@ package com.done.ecommerce.dto.users;
 import com.done.ecommerce.domain.entity.Users;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter @Setter
 @Builder
 @ToString
 @AllArgsConstructor
 public class UserDto {
+
     private Long id;
+
+    @NotBlank
     private String name;
+    @NotBlank
     private String userId;
+    @NotBlank
     private String userPwd;
-    private int age;
     private String phone;
     private int role;
 
