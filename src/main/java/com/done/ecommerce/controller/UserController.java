@@ -1,6 +1,8 @@
 package com.done.ecommerce.controller;
 
 import com.done.ecommerce.dto.users.LoginReq;
+import com.done.ecommerce.dto.users.ProfileResponse;
+import com.done.ecommerce.dto.users.SaveUserDto;
 import com.done.ecommerce.dto.users.UserDto;
 import com.done.ecommerce.service.UserService;
 import com.done.ecommerce.utils.SessionUtil;
@@ -54,19 +56,46 @@ public class UserController {
     /**
      * 로그인 사용자 정보 조회
      */
-    @GetMapping(value="/user-info")
-    public ResponseEntity<Map<String, Object>> userInfo(HttpServletRequest request, HttpSession session) throws AuthenticationException{
+    @GetMapping(value="/my-profile")
+    public ResponseEntity<ProfileResponse> getUserProfile(HttpServletRequest request, HttpSession session) throws AuthenticationException{
         // 로그인 Session이 없는 경우 예외처리
         if(session == null || !request.isRequestedSessionIdValid()) {
             throw new AuthenticationException();
         }
 
-        Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put("name", SessionUtil.getLoginUserId(session));
-        userInfo.put("role", SessionUtil.getLoginUserRole(session));
-        userInfo.put("id", SessionUtil.getLoginUserId(session));
+        ProfileResponse profileResponse = ProfileResponse.builder()
+                .name(SessionUtil.getLoginUserName(session))
+                .phone(SessionUtil.getLoginUserPhone(session))
+                .roleNm(SessionUtil.getLoginUserRole(session))
+                .build();
 
-        return new ResponseEntity<>(userInfo, HttpStatus.OK);
+        return new ResponseEntity<>(profileResponse, HttpStatus.OK);
+    }
+
+    /**
+     * 회원가입
+     */
+    @PostMapping(value="/save-user")
+    public HttpStatus saveUser(@RequestBody @Valid SaveUserDto saveUserDto){
+
+        boolean isDuplicated = userService.isDuplicatedUserId(saveUserDto.getUserId());
+        if(isDuplicated) return HttpStatus.CONFLICT;
+
+        saveUserDto.setRole(300);   // 일반 신규 회원 등록
+        userService.saveUser(saveUserDto);
+
+        return HttpStatus.OK;
+    }
+
+    /**
+     * 사용자 아이디 중복확인
+     */
+    @GetMapping(value="/duplicated/{userId}")
+    public HttpStatus isDuplicatedUserId(@PathVariable String userId){
+        boolean isDuplicated = userService.isDuplicatedUserId(userId);
+        if(isDuplicated) return HttpStatus.CONFLICT;
+
+        return HttpStatus.OK;
     }
 
     /**
@@ -74,7 +103,12 @@ public class UserController {
      */
     @CacheEvict(value="LOGOUT_DELETE_CAHCE")
     @PostMapping (value="/logout")
-    public HttpStatus logout(HttpSession session){
+    public HttpStatus logout(HttpServletRequest request, HttpSession session){
+        // 로그인 Session이 없는 경우 예외처리
+        if(session == null || !request.isRequestedSessionIdValid()) {
+            return HttpStatus.UNAUTHORIZED;
+        }
+
         SessionUtil.sessionClear(session);
         // 로그아웃 시 홈 가화면으로 이동
         return HttpStatus.MOVED_PERMANENTLY;
