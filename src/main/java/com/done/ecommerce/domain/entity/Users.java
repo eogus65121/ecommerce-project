@@ -27,18 +27,18 @@ public class Users {
     @Column(nullable = false)
     private String userPwd;
 
-    private int age;
-
+    @Column(nullable = false)
     private String phone;
 
     @Column(nullable = false)
     private int role;
 
     @Builder
-    public Users(String name, String userId, String userPwd, int role){
+    public Users(String name, String userId, String userPwd, String phone, int role){
         this.name = name;
         this.userId = userId;
         this.userPwd = userPwd;
+        this.phone = phone;
         this.role = role;
     }
 }
