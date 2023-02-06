@@ -29,6 +29,7 @@ public class UserRepositoryTest {
                     .name("name" + i)
                     .userId("id" + i)
                     .userPwd("pwd" + i)
+                    .phone("01000000000")
                     .role(100)
                     .build());
         }
@@ -48,5 +49,22 @@ public class UserRepositoryTest {
         assertThat(response.getUserId()).isEqualTo(id);
         assertThat(response.getName()).isEqualTo("name3");
         assertThat(response.getRole()).isEqualTo(100);
+    }
+
+    @Test
+    public void 아이디_중복확인(){
+        //given
+        String id1 = "id3";
+        String id2 = "id12";
+
+        //when
+        Boolean flagTrue = userRepository.existsByUserId(id1);
+        Boolean flagFalse = userRepository.existsByUserId(id2);
+
+        // then
+        // 존재 테스트
+        assertThat(flagTrue).isEqualTo(true);
+        // 미존재 테스트
+        assertThat(flagFalse).isEqualTo(false);
     }
 }
