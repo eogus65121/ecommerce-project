@@ -91,4 +91,19 @@ public class UserRepositoryTest {
         //then
         assertThat(afterCnt).isEqualTo(beforeCnt+1);
     }
+
+    @Test
+    public void 비밀번호_변경(){
+        //given
+        String id = "id2";
+        String afterPwd = "pwd33";
+
+        //when
+        userRepository.updateUserPwdByUserId(id, afterPwd);
+        UserDto userDto = userRepository.findByUserIdAndUserPwd(id, afterPwd);
+
+        //then
+        assertThat(userDto.getUserPwd()).isEqualTo(afterPwd);
+
+    }
 }
