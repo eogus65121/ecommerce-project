@@ -28,4 +28,9 @@ public class UserService {
     public void saveUser(SaveUserDto saveUserDto){
         userRepository.save(saveUserDto.toEntity(saveUserDto.getName(), saveUserDto.getUserId(), saveUserDto.getUserPwd(), saveUserDto.getPhone(), saveUserDto.getRole()));
     }
+
+    // 사용자 pwd 변경
+    public void updateUserPwdByUserId(LoginReq loginReq){
+        userRepository.updateUserPwdByUserId(loginReq.getUserId(), loginReq.getUserPwd());
+    }
 }

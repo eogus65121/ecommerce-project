@@ -73,6 +73,15 @@ public class UserController {
     }
 
     /**
+     * 비밀번호 변경
+     */
+    @PostMapping(value="/my-profile")
+    public HttpStatus updateUserPwdByUserId(@RequestBody LoginReq loginReq){
+        userService.updateUserPwdByUserId(loginReq);
+        return HttpStatus.OK;
+    }
+
+    /**
      * 회원가입
      */
     @PostMapping(value="/save-user")
