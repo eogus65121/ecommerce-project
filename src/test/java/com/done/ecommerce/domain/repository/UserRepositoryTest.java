@@ -1,6 +1,7 @@
 package com.done.ecommerce.domain.repository;
 
 import com.done.ecommerce.domain.entity.Users;
+import com.done.ecommerce.dto.users.SaveUserDto;
 import com.done.ecommerce.dto.users.UserDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -66,5 +69,26 @@ public class UserRepositoryTest {
         assertThat(flagTrue).isEqualTo(true);
         // 미존재 테스트
         assertThat(flagFalse).isEqualTo(false);
+    }
+
+    @Test
+    public void 신규사용자_저장(){
+        //given
+        SaveUserDto saveUserDto = new SaveUserDto();
+        saveUserDto.setUserId("newId");
+        saveUserDto.setUserPwd("newPwd");
+        saveUserDto.setName("newName");
+        saveUserDto.setPhone("11111111111");
+        saveUserDto.setRole(300);
+
+        //when
+        List<Users> list1 = userRepository.findAll();
+        int beforeCnt = list1.size();
+        userRepository.save(saveUserDto.toEntity(saveUserDto.getName(), saveUserDto.getUserId(), saveUserDto.getUserPwd(), saveUserDto.getPhone(), saveUserDto.getRole()));
+        List<Users> list2 = userRepository.findAll();
+        int afterCnt = list2.size();
+
+        //then
+        assertThat(afterCnt).isEqualTo(beforeCnt+1);
     }
 }
