@@ -15,6 +15,7 @@ public class SaveUserDto {
     private String userId;
     @NotBlank
     private String userPwd;
+    @NotBlank
     private String phone;
     private int role;
 
