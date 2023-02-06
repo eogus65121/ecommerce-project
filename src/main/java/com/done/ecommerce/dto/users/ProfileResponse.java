@@ -1,13 +1,13 @@
 package com.done.ecommerce.dto.users;
 
-import com.done.ecommerce.domain.entity.Users;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 
 @Builder
 @Getter
-@RequiredArgsConstructor
+@Setter
 public class ProfileResponse {
 
     private String name;
