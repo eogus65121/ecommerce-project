@@ -93,7 +93,7 @@ public class UserController {
         saveUserDto.setRole(300);   // 일반 신규 회원 등록
         userService.saveUser(saveUserDto);
 
-        return HttpStatus.OK;
+        return HttpStatus.CREATED;
     }
 
     /**

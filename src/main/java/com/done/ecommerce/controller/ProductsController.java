@@ -52,7 +52,7 @@ public class ProductsController {
             e.printStackTrace();
             return HttpStatus.BAD_REQUEST;
         }
-        return HttpStatus.OK;
+        return HttpStatus.CREATED;
     }
 
     /**
