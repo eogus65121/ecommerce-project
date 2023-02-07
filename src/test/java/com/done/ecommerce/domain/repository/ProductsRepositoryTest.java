@@ -1,7 +1,8 @@
 package com.done.ecommerce.domain.repository;
 
-import com.done.ecommerce.domain.entity.Products;
-import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
+import com.done.ecommerce.products.domain.entity.Products;
+import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
+import com.done.ecommerce.products.domain.repository.ProductsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

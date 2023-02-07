@@ -1,8 +1,9 @@
 package com.done.ecommerce.domain.repository;
 
-import com.done.ecommerce.domain.entity.Users;
-import com.done.ecommerce.dto.users.SaveUserDto;
-import com.done.ecommerce.dto.users.UserDto;
+import com.done.ecommerce.users.domain.entity.Users;
+import com.done.ecommerce.users.dto.SaveUserDto;
+import com.done.ecommerce.users.dto.UserDto;
+import com.done.ecommerce.users.domain.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,5 @@ public class UserRepositoryTest {
 
         //then
         assertThat(userDto.getUserPwd()).isEqualTo(afterPwd);
-
     }
 }
