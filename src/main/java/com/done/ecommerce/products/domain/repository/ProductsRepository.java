@@ -1,7 +1,7 @@
-package com.done.ecommerce.domain.repository;
+package com.done.ecommerce.products.domain.repository;
 
-import com.done.ecommerce.domain.entity.Products;
-import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
+import com.done.ecommerce.products.domain.entity.Products;
+import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

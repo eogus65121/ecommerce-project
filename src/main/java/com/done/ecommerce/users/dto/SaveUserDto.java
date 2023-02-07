@@ -1,6 +1,6 @@
-package com.done.ecommerce.dto.users;
+package com.done.ecommerce.users.dto;
 
-import com.done.ecommerce.domain.entity.Users;
+import com.done.ecommerce.users.domain.entity.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

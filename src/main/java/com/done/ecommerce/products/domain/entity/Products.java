@@ -1,4 +1,4 @@
-package com.done.ecommerce.domain.entity;
+package com.done.ecommerce.products.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

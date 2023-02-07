@@ -1,10 +1,10 @@
-package com.done.ecommerce.service;
+package com.done.ecommerce.products.service;
 
-import com.done.ecommerce.domain.entity.Products;
-import com.done.ecommerce.domain.repository.ProductsRepository;
-import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
-import com.done.ecommerce.dto.products.ProductsAddDto;
-import com.done.ecommerce.dto.products.ProductsDto;
+import com.done.ecommerce.products.domain.entity.Products;
+import com.done.ecommerce.products.domain.repository.ProductsRepository;
+import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
+import com.done.ecommerce.products.dto.ProductsAddDto;
+import com.done.ecommerce.products.dto.ProductsDto;
 import com.done.ecommerce.utils.SessionUtil;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

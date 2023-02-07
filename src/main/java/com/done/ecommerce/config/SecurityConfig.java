@@ -1,7 +1,7 @@
 package com.done.ecommerce.config;
 
 //import com.done.ecommerce.config.auth.CustomOAuth2UserService;
-//import com.done.ecommerce.dto.users.Role;
+//import com.done.ecommerce.users.dto.Role;
 import com.done.ecommerce.config.auth.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;

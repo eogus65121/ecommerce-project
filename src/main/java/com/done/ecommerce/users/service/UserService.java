@@ -1,9 +1,9 @@
-package com.done.ecommerce.service;
+package com.done.ecommerce.users.service;
 
-import com.done.ecommerce.domain.repository.UserRepository;
-import com.done.ecommerce.dto.users.LoginReq;
-import com.done.ecommerce.dto.users.SaveUserDto;
-import com.done.ecommerce.dto.users.UserDto;
+import com.done.ecommerce.users.domain.repository.UserRepository;
+import com.done.ecommerce.users.dto.LoginReq;
+import com.done.ecommerce.users.dto.SaveUserDto;
+import com.done.ecommerce.users.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,9 +1,9 @@
-package com.done.ecommerce.controller;
+package com.done.ecommerce.products.controller;
 
-import com.done.ecommerce.dto.products.ProductIdProjectionInterface;
-import com.done.ecommerce.dto.products.ProductsAddDto;
-import com.done.ecommerce.dto.products.ProductsDto;
-import com.done.ecommerce.service.ProductsService;
+import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
+import com.done.ecommerce.products.dto.ProductsAddDto;
+import com.done.ecommerce.products.dto.ProductsDto;
+import com.done.ecommerce.products.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

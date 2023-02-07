@@ -1,7 +1,7 @@
-package com.done.ecommerce.domain.repository;
+package com.done.ecommerce.users.domain.repository;
 
-import com.done.ecommerce.domain.entity.Users;
-import com.done.ecommerce.dto.users.UserDto;
+import com.done.ecommerce.users.domain.entity.Users;
+import com.done.ecommerce.users.dto.UserDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

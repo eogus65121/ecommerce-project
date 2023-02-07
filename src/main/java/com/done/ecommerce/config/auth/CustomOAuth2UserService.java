@@ -1,9 +1,9 @@
 package com.done.ecommerce.config.auth;
 
 import com.done.ecommerce.config.auth.dto.OAuthAttributes;
-import com.done.ecommerce.domain.entity.Users;
-import com.done.ecommerce.domain.repository.UserRepository;
-import com.done.ecommerce.dto.users.Role;
+import com.done.ecommerce.users.domain.entity.Users;
+import com.done.ecommerce.users.domain.repository.UserRepository;
+import com.done.ecommerce.users.dto.Role;
 import com.done.ecommerce.utils.SessionUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

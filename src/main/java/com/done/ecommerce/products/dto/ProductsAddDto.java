@@ -1,10 +1,9 @@
-package com.done.ecommerce.dto.products;
+package com.done.ecommerce.products.dto;
 
-import com.done.ecommerce.domain.entity.Products;
+import com.done.ecommerce.products.domain.entity.Products;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;

@@ -1,6 +1,6 @@
 package com.done.ecommerce.config.auth.dto;
 
-import com.done.ecommerce.domain.entity.Users;
+import com.done.ecommerce.users.domain.entity.Users;
 import lombok.Builder;
 import lombok.Getter;
 

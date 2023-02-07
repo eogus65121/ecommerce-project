@@ -1,7 +1,7 @@
 package com.done.ecommerce.utils;
 
-import com.done.ecommerce.dto.users.Role;
-import com.done.ecommerce.dto.users.UserDto;
+import com.done.ecommerce.users.dto.Role;
+import com.done.ecommerce.users.dto.UserDto;
 
 import javax.servlet.http.HttpSession;
 

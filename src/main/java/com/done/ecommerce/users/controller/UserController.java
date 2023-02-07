@@ -1,10 +1,10 @@
-package com.done.ecommerce.controller;
+package com.done.ecommerce.users.controller;
 
-import com.done.ecommerce.dto.users.LoginReq;
-import com.done.ecommerce.dto.users.ProfileResponse;
-import com.done.ecommerce.dto.users.SaveUserDto;
-import com.done.ecommerce.dto.users.UserDto;
-import com.done.ecommerce.service.UserService;
+import com.done.ecommerce.users.dto.LoginReq;
+import com.done.ecommerce.users.dto.ProfileResponse;
+import com.done.ecommerce.users.dto.SaveUserDto;
+import com.done.ecommerce.users.dto.UserDto;
+import com.done.ecommerce.users.service.UserService;
 import com.done.ecommerce.utils.SessionUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -81,7 +79,7 @@ public class UserController {
         return HttpStatus.OK;
     }
 
-    /**
+    /**}
      * 회원가입
      */
     @PostMapping(value="/save-user")
