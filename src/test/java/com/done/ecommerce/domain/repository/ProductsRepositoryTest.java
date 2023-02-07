@@ -31,6 +31,7 @@ public class ProductsRepositoryTest {
                     .name("name" + i)
                     .description("description" + i)
                     .price(10000 + i)
+                    .groupId(i)
                     .createdDt(LocalDate.of(2022,01,07))
                     .createUsrId("admin" + i)
                     .build());
@@ -105,5 +106,25 @@ public class ProductsRepositoryTest {
 
         //then
         assertThat(sizeAfterDelete).isEqualTo(currentSize-1);
+    }
+
+    @Test
+    public void 그룹코드별_조회(){
+        //given
+        LocalDate createDt = LocalDate.of(2022,01,07);
+        productsRepository.save(Products.builder()
+                .name("name22")
+                .description("description22")
+                .price(2222)
+                .groupId(2)
+                .createdDt(createDt)
+                .createUsrId("admin")
+                .build());
+
+        //when
+        List<ProductIdProjectionInterface> list = productsRepository.findByGroupId(2);
+
+        //then
+        assertThat(list.size()).isEqualTo(2);
     }
 }
