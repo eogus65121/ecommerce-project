@@ -6,17 +6,18 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@ToString
+@Getter @Setter
 @Builder
 public class ProductsAddDto{
-    private Long id;
+    @NotEmpty
     private String name;
     private String description;
+    @NotEmpty
     private int price;
+    @NotEmpty
     private int productGroupId;
     private String remark;
     private String createUsrId;
