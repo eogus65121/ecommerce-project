@@ -1,5 +1,6 @@
 package com.done.ecommerce.products.domain.entity;
 
+import com.done.ecommerce.common.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor      // 기본 생성자 자동 추가
 @AllArgsConstructor
 @Entity
-public class Products {
+public class Products extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // auto increment
