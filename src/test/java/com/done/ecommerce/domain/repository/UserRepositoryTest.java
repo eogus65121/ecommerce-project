@@ -110,14 +110,15 @@ public class UserRepositoryTest {
 
     @Test
     public void UsersEntity_BaseTime_Auditing_Test(){
-        //given
+        // given
         LocalDateTime now = LocalDateTime.of(2023,2,9,19,50);
         String id = "id3";
         String pwd = "pwd3";
 
-        //when
+        // when
         UserDto userDto = userRepository.findByUserIdAndUserPwd(id, pwd);
 
+        // then
         assertThat(userDto.getUpdatedDate()).isAfter(now);
         assertThat(userDto.getCreatedDate()).isAfter(now);
 
