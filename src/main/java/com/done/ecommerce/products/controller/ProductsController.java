@@ -70,4 +70,14 @@ public class ProductsController {
         return HttpStatus.OK;
     }
 
+    /**
+     * 상품 그룹코드(카테고리별) 조회하기
+     */
+
+    @GetMapping(value = "/{groupId}/select-products")
+    public ResponseEntity<List<ProductIdProjectionInterface>> selectProductsByGroupId(@PathVariable("groupId") int groupId){
+        List<ProductIdProjectionInterface> rtnList = productsService.findByGroupId(groupId);
+        return new ResponseEntity<>(rtnList, HttpStatus.OK);
+    }
+
 }

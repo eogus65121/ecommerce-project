@@ -58,6 +58,12 @@ public class ProductsService {
         productsRepository.deleteById(id);
     }
 
+    // select by group id
+    public List<ProductIdProjectionInterface> findByGroupId(int groupId){
+        List<ProductIdProjectionInterface> list = productsRepository.findByGroupId(groupId);
+        return list;
+    }
+
     public void productDataSet(Products products) {productsRepository.save(products);}
 
 }
