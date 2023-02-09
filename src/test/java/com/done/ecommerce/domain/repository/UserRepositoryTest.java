@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -105,5 +106,20 @@ public class UserRepositoryTest {
 
         //then
         assertThat(userDto.getUserPwd()).isEqualTo(afterPwd);
+    }
+
+    @Test
+    public void UsersEntity_BaseTime_Auditing_Test(){
+        //given
+        LocalDateTime now = LocalDateTime.of(2023,2,9,19,50);
+        String id = "id3";
+        String pwd = "pwd3";
+
+        //when
+        UserDto userDto = userRepository.findByUserIdAndUserPwd(id, pwd);
+
+        assertThat(userDto.getUpdatedDate()).isAfter(now);
+        assertThat(userDto.getCreatedDate()).isAfter(now);
+
     }
 }
