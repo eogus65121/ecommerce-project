@@ -1,36 +1,23 @@
 package com.done.ecommerce.users.service;
 
-import com.done.ecommerce.users.domain.repository.UserRepository;
+import com.done.ecommerce.users.domain.entity.Users;
 import com.done.ecommerce.users.dto.LoginReq;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@RequiredArgsConstructor
-@Service
-public class UserService {
+import java.util.Optional;
 
-    private final UserRepository userRepository;
+public interface UserService {
 
-    public UserDto loginUser(LoginReq reqDto) {
-        return userRepository.findByUserIdAndUserPwd(reqDto.getUserId(), reqDto.getUserPwd());
-    }
-
+    // 로그인
+    public UserDto loginUser(LoginReq reqDto);
     // user id 중복확인
-    public boolean isDuplicatedUserId(String userId){
-        return userRepository.existsByUserId(userId);
-    }
-
+    public boolean isDuplicatedUserId(String userId);
     // 신규 회원 등록
-    @Transactional
-    public void saveUser(SaveUserDto saveUserDto){
-        userRepository.save(saveUserDto.toEntity(saveUserDto.getName(), saveUserDto.getUserId(), saveUserDto.getUserPwd(), saveUserDto.getPhone(), saveUserDto.getRole()));
-    }
-
+    public void saveUser(SaveUserDto saveUserDto);
     // 사용자 pwd 변경
-    public void updateUserPwdByUserId(LoginReq loginReq){
-        userRepository.updateUserPwdByUserId(loginReq.getUserId(), loginReq.getUserPwd());
-    }
+    public void updateUserPwdByUserId(String userId, String userPwd);
+    // id로 사용자 찾기
+    public UserDto findByUserId(String userId);
+
 }

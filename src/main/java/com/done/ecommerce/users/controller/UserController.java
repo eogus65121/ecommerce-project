@@ -1,7 +1,8 @@
 package com.done.ecommerce.users.controller;
 
+import com.done.ecommerce.common.annotation.LoginRequired;
+import com.done.ecommerce.common.annotation.LoginUser;
 import com.done.ecommerce.users.dto.LoginReq;
-import com.done.ecommerce.users.dto.ProfileResponse;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
 import com.done.ecommerce.users.service.UserService;
@@ -54,28 +55,19 @@ public class UserController {
     /**
      * 로그인 사용자 정보 조회
      */
+    @LoginRequired
     @GetMapping(value="/my-profile")
-    public ResponseEntity<ProfileResponse> getUserProfile(HttpServletRequest request, HttpSession session) throws AuthenticationException{
-        // 로그인 Session이 없는 경우 예외처리
-        if(session == null || !request.isRequestedSessionIdValid()) {
-            throw new AuthenticationException();
-        }
-
-        ProfileResponse profileResponse = ProfileResponse.builder()
-                .name(SessionUtil.getLoginUserName(session))
-                .phone(SessionUtil.getLoginUserPhone(session))
-                .roleNm(SessionUtil.getLoginUserRole(session))
-                .build();
-
+    public ResponseEntity<UserDto> getUserProfile(@LoginUser UserDto profileResponse) throws AuthenticationException{
         return new ResponseEntity<>(profileResponse, HttpStatus.OK);
     }
 
     /**
      * 비밀번호 변경
      */
+    @LoginRequired
     @PutMapping(value="/my-profile")
-    public HttpStatus updateUserPwdByUserId(@RequestBody LoginReq loginReq){
-        userService.updateUserPwdByUserId(loginReq);
+    public HttpStatus updateUserPwdByUserId(@LoginUser UserDto profileResponse){
+        userService.updateUserPwdByUserId(profileResponse.getUserId(), profileResponse.getUserPwd());
         return HttpStatus.OK;
     }
 
@@ -108,6 +100,7 @@ public class UserController {
     /**
      * 로그아웃
      */
+    @LoginRequired
     @CacheEvict(value="LOGOUT_DELETE_CAHCE")
     @PostMapping (value="/logout")
     public HttpStatus logout(HttpServletRequest request, HttpSession session){
