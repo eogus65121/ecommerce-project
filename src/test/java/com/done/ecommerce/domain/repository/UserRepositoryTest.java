@@ -123,4 +123,20 @@ public class UserRepositoryTest {
         assertThat(userDto.getCreatedDate()).isAfter(now);
 
     }
+
+    @Test
+    public void findByUserId_Test(){
+        // given
+        String id = "id4";
+        String id2 = "id44";
+
+        //when
+        boolean flag = userRepository.findByUserId(id).isEmpty();
+        boolean flag2 = userRepository.findByUserId(id2).isEmpty();
+
+        // then
+        assertThat(flag).isEqualTo(false);
+        assertThat(flag2).isEqualTo(true);
+
+    }
 }
