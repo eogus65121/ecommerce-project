@@ -17,10 +17,13 @@ public interface UserRepository extends JpaRepository<Users, Long>{
     // id와 pwd 일치 여부로 로그인 check
     public UserDto findByUserIdAndUserPwd(String userId, String userPwd);
 
+    // userId로 사용자 정보 찾기
     public Optional<Users> findByUserId(String userId);
 
+    // userId가 존재하는지 여부 확인
     public boolean existsByUserId(String userId);
 
+    // 사용자 비밀번호 변경하기
     @Modifying
     @Transactional
     @Query(value = "update Users u set u.userPwd = :userPwd where u.userId = :userId")

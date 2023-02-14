@@ -5,6 +5,7 @@ import com.done.ecommerce.users.dto.UserDto;
 
 import javax.servlet.http.HttpSession;
 
+// 세션 정보(name, usrId, role, phone)
 public class SessionUtil {
     private static final String LOGIN_USER_NAME = "LOGIN_USER_NAME";
     private static final String LOGIN_USER_ID = "LOGIN_USER_ID";
@@ -14,6 +15,7 @@ public class SessionUtil {
     // 인스턴스화 방지
     private SessionUtil(){}
 
+    // 로그인 정보 세션에 모두 저장
     public static void setLoginUserInfo(HttpSession session, UserDto userDto){
         SessionUtil.setLoginUserRole(session, userDto.getRole());
         SessionUtil.setLoginUserName(session, userDto.getName());
