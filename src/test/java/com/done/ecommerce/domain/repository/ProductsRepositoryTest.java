@@ -127,4 +127,19 @@ public class ProductsRepositoryTest {
         //then
         assertThat(list.size()).isEqualTo(2);
     }
+
+    @Test
+    public void 상품_이름조회(){
+        //given
+        String name = "name";
+        String name2 = "name2";
+
+        //when
+        List<ProductIdProjectionInterface> list = productsRepository.findByNameContains(name);
+        List<ProductIdProjectionInterface> list2 = productsRepository.findByNameContains(name2);
+
+        //then
+        assertThat(list.size()).isEqualTo(10);
+        assertThat(list2.size()).isEqualTo(1);
+    }
 }
