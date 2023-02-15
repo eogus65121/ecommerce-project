@@ -73,10 +73,18 @@ public class ProductsController {
     /**
      * 상품 그룹코드(카테고리별) 조회하기
      */
-
     @GetMapping(value = "/{groupId}/select-products")
     public ResponseEntity<List<ProductIdProjectionInterface>> selectProductsByGroupId(@PathVariable("groupId") int groupId){
         List<ProductIdProjectionInterface> rtnList = productsService.findByGroupId(groupId);
+        return new ResponseEntity<>(rtnList, HttpStatus.OK);
+    }
+
+    /**
+     * 상품 명으로 품목 조회
+     */
+    @GetMapping(value = "/select-products/{name}")
+    public ResponseEntity<List<ProductIdProjectionInterface>> selectProductsByName(@PathVariable("name") String name){
+        List<ProductIdProjectionInterface> rtnList = productsService.selectProductByName(name);
         return new ResponseEntity<>(rtnList, HttpStatus.OK);
     }
 

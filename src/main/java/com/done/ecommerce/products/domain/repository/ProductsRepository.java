@@ -21,4 +21,7 @@ public interface ProductsRepository extends JpaRepository<Products, Long> {
     // 그룹 코드별 조회
     public List<ProductIdProjectionInterface> findByGroupId(int groupId);
 
+    // 이름으로 상품 조회하기
+    public List<ProductIdProjectionInterface> findByNameContains(String name);
+
 }

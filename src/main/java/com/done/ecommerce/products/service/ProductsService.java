@@ -66,4 +66,8 @@ public class ProductsService {
 
     public void productDataSet(Products products) {productsRepository.save(products);}
 
+    public List<ProductIdProjectionInterface> selectProductByName(String name){
+        return productsRepository.findByNameContains(name);
+    }
+
 }
