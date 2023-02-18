@@ -65,7 +65,7 @@ public class UserController {
      * 비밀번호 변경
      */
     @LoginRequired
-    @PutMapping(value="/my-profile")
+    @PutMapping(value="/password")
     public HttpStatus updateUserPwdByUserId(@LoginUser UserDto profileResponse){
         userService.updateUserPwdByUserId(profileResponse.getUserId(), profileResponse.getUserPwd());
         return HttpStatus.OK;

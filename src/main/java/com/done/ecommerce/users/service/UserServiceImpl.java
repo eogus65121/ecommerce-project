@@ -5,12 +5,12 @@ import com.done.ecommerce.users.domain.repository.UserRepository;
 import com.done.ecommerce.users.dto.LoginReq;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
+import com.done.ecommerce.users.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Service
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     // userId로 사용자 찾기 > 결과값 DTO로 매핑
     public UserDto findByUserId(String userId){
-        Users user = userRepository.findByUserId(userId).orElseThrow(NoSuchElementException::new);
+        Users user = userRepository.findByUserId(userId).orElseThrow(UserNotFoundException::new);
         return modelMapper.map(user, UserDto.class);
     }
 }
