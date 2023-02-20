@@ -2,7 +2,10 @@ package com.done.ecommerce.common.exception;
 
 import com.done.ecommerce.common.exception.vo.ErrorResponse;
 import com.done.ecommerce.common.exception.vo.ExceptionType;
+import com.done.ecommerce.products.exception.CategoryNotFoundException;
+import jdk.jfr.Category;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -72,6 +75,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(exceptionType.getHttpStatus())
                 .body(errorResponse);
+    }
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<String> categoryNotFoundException(CategoryNotFoundException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
 }
