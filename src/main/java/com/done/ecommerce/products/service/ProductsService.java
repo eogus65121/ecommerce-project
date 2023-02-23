@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
@@ -54,6 +55,7 @@ public class ProductsService {
         productsRepository.save(addDto.toEntity());
     }
 
+    @Transactional
     public void deleteProduct(Long id)  {
         productsRepository.deleteById(id);
     }
