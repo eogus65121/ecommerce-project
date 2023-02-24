@@ -1,6 +1,8 @@
 
 # H2 DB setting
 spring:
+  session:
+    storage-type: redis
   h2:
   datasource:
     url: jdbc:h2:tcp://localhost/~/test;MODE=MYSQL

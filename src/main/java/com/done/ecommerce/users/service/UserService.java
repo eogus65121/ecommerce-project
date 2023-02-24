@@ -1,11 +1,8 @@
 package com.done.ecommerce.users.service;
 
-import com.done.ecommerce.users.domain.entity.Users;
 import com.done.ecommerce.users.dto.LoginReq;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
-
-import java.util.Optional;
 
 public interface UserService {
 
