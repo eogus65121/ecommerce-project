@@ -15,11 +15,11 @@ public interface ProductsRepository extends JpaRepository<Products, Long> {
 
     // select product detail
     @Query(value = "select pd.id AS id, pd.name AS name, pd.description AS description, pd.price AS price, pd.createdDt AS createdDt" +
-            ", pd.createUsrId AS createUsrId, pd.groupId AS groupId, pd.remark AS remark from Products AS pd where pd.id = :id")
+            ", pd.createUsrId AS createUsrId, pd.category AS category, pd.remark AS remark from Products AS pd where pd.id = :id")
     public ProductIdProjectionInterface selectProductDetl(@Param(value = "id") Long id);
 
     // 그룹 코드별 조회
-    public List<ProductIdProjectionInterface> findByGroupId(int groupId);
+    public List<ProductIdProjectionInterface> findByCategory(int category);
 
     // 이름으로 상품 조회하기
     public List<ProductIdProjectionInterface> findByNameContains(String name);

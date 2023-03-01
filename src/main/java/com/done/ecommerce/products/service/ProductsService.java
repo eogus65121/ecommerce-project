@@ -61,8 +61,8 @@ public class ProductsService {
     }
 
     // select by group id
-    public List<ProductIdProjectionInterface> findByGroupId(int groupId){
-        List<ProductIdProjectionInterface> list = productsRepository.findByGroupId(groupId);
+    public List<ProductIdProjectionInterface> findByCategory(int category){
+        List<ProductIdProjectionInterface> list = productsRepository.findByCategory(category);
         return list;
     }
 

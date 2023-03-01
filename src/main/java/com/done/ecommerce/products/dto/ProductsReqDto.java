@@ -14,5 +14,5 @@ public class ProductsReqDto {
     private String description;
     private int price;
     private LocalDate createdDt;
-    private int groupId;
+    private int category;
 }

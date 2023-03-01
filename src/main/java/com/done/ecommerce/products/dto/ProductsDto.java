@@ -1,5 +1,6 @@
 package com.done.ecommerce.products.dto;
 
+import com.done.ecommerce.products.domain.entity.Category;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,6 +18,6 @@ public class ProductsDto implements Serializable {
     private int price;
     private LocalDate createdDt;
     private String createUsrId;
-    private int groupId;
+    private int category;
     private String remark;
 }

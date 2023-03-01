@@ -1,5 +1,6 @@
 package com.done.ecommerce.products.dto;
 
+import com.done.ecommerce.products.domain.entity.Category;
 import com.done.ecommerce.products.domain.entity.Products;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +18,7 @@ public class ProductsAddDto{
     @NotEmpty
     private int price;
     @NotEmpty
-    private int productGroupId;
+    private int category;
     private String remark;
     private String createUsrId;
     private LocalDate createdDt;
@@ -29,7 +30,7 @@ public class ProductsAddDto{
                 .name(name)
                 .description(description)
                 .price(price)
-                .groupId(productGroupId)
+                .category(category)
                 .remark(remark)
                 .createUsrId(createUsrId)
                 .createdDt(createdDt)
