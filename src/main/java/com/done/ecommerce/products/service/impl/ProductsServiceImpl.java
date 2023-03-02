@@ -1,7 +1,10 @@
 package com.done.ecommerce.products.service.impl;
 
+import com.done.ecommerce.products.domain.entity.Category;
 import com.done.ecommerce.products.domain.entity.Products;
+import com.done.ecommerce.products.domain.repository.CategoryRepository;
 import com.done.ecommerce.products.domain.repository.ProductsRepository;
+import com.done.ecommerce.products.dto.CategoryDto;
 import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
 import com.done.ecommerce.products.dto.ProductsAddDto;
 import com.done.ecommerce.products.dto.ProductsDto;
@@ -23,6 +26,7 @@ import java.util.stream.Collectors;
 public class ProductsServiceImpl implements ProductsService {
 
     private final ProductsRepository productsRepository;
+    private final CategoryRepository categoryRepository;
     private final HttpSession session;
     private final ModelMapper modelMapper;
 
@@ -34,7 +38,7 @@ public class ProductsServiceImpl implements ProductsService {
 
         // Entity 결과값에서 DTO로 변경
         List<ProductsDto> rtnList = list.stream()
-                .map(post -> modelMapper.map(post, ProductsDto.class))
+                .map(product -> modelMapper.map(product, ProductsDto.class))
                 .collect(Collectors.toList());
 
         return rtnList;
@@ -68,8 +72,23 @@ public class ProductsServiceImpl implements ProductsService {
         return list;
     }
 
+    // 특정 상품명을 포함한 상품 조회
     @Override
     public List<ProductIdProjectionInterface> selectProductByName(String name){
         return productsRepository.findByNameContains(name);
+    }
+
+
+    // 카테고리 목록 전체 조회
+    @Override
+    public List<CategoryDto> selectAllCategory(){
+
+        List<Category> list = categoryRepository.findAll();
+
+        List<CategoryDto> rtnList = list.stream()
+                .map(category -> modelMapper.map(category, CategoryDto.class))
+                .collect(Collectors.toList());
+
+        return rtnList;
     }
 }
