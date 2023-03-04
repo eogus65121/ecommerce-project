@@ -1,8 +1,11 @@
 package com.done.ecommerce.domain.repository;
 
+import com.done.ecommerce.products.domain.entity.Category;
 import com.done.ecommerce.products.domain.entity.Products;
+import com.done.ecommerce.products.domain.repository.CategoryRepository;
 import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
 import com.done.ecommerce.products.domain.repository.ProductsRepository;
+import com.done.ecommerce.products.exception.CategoryNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +26,27 @@ public class ProductsRepositoryTest {
 
     @Autowired
     private ProductsRepository productsRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @BeforeEach
     public void saveData(){
         for(int i = 1; i < 11; i++){
+            // 카테고리 데이터 셋팅
+            categoryRepository.save(Category.builder().categoryName("categoryName" + i).build());
+
+            Long n = new Long(i);
+
+            // 카테고리 엔티티 조회
+            Category category = categoryRepository.findCategoryById(n)
+                            .orElseThrow(() -> new CategoryNotFoundException(n.toString()));
+
+            // 상품 저장
             productsRepository.save(Products.builder()
                     .name("name" + i)
                     .description("description" + i)
                     .price(10000 + i)
-                    .groupId(i)
+                    .category(category)
                     .createdDt(LocalDate.of(2022,01,07))
                     .createUsrId("admin" + i)
                     .build());
@@ -111,21 +126,13 @@ public class ProductsRepositoryTest {
     @Test
     public void 그룹코드별_조회(){
         //given
-        LocalDate createDt = LocalDate.of(2022,01,07);
-        productsRepository.save(Products.builder()
-                .name("name22")
-                .description("description22")
-                .price(2222)
-                .groupId(2)
-                .createdDt(createDt)
-                .createUsrId("admin")
-                .build());
+        Category paramCategory = categoryRepository.findById(2l).orElseThrow();
 
         //when
-        List<ProductIdProjectionInterface> list = productsRepository.findByGroupId(2);
+        List<ProductIdProjectionInterface> list = productsRepository.findByCategory(paramCategory);
 
         //then
-        assertThat(list.size()).isEqualTo(2);
+        assertThat(list.size()).isEqualTo(1);
     }
 
     @Test
