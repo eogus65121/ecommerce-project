@@ -17,7 +17,6 @@ public class Products extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // auto increment
-    @Column(name = "PRODUCT_ID")
     private Long id;
 
     @Column(length = 500, nullable = false)
