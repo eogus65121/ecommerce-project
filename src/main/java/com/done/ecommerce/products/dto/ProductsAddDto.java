@@ -18,7 +18,7 @@ public class ProductsAddDto{
     @NotEmpty
     private int price;
     @NotEmpty
-    private int category;
+    private Category category;
     private String remark;
     private String createUsrId;
     private LocalDate createdDt;

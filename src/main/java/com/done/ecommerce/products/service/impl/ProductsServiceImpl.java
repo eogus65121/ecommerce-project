@@ -31,7 +31,7 @@ public class ProductsServiceImpl implements ProductsService {
     private final ModelMapper modelMapper;
 
     // select all products
-    @Cacheable(value = "PRODUCT_SEARCH_ALL")
+//    @Cacheable(value = "PRODUCT_SEARCH_ALL")
     @Override
     public List<ProductsDto> selectAllProducts() {
         List<Products> list = productsRepository.findAll();
@@ -68,7 +68,9 @@ public class ProductsServiceImpl implements ProductsService {
     // select by group id
     @Override
     public List<ProductIdProjectionInterface> findByCategory(int categoryId){
-        List<ProductIdProjectionInterface> list = productsRepository.findByCategory(categoryId);
+        Long categoryLongId = new Long(categoryId);
+        Category paramCategory = categoryRepository.findCategoryById(categoryLongId).orElseThrow();
+        List<ProductIdProjectionInterface> list = productsRepository.findByCategory(paramCategory);
         return list;
     }
 

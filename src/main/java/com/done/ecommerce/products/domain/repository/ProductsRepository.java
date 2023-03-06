@@ -1,5 +1,6 @@
 package com.done.ecommerce.products.domain.repository;
 
+import com.done.ecommerce.products.domain.entity.Category;
 import com.done.ecommerce.products.domain.entity.Products;
 import com.done.ecommerce.products.dto.ProductIdProjectionInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +20,7 @@ public interface ProductsRepository extends JpaRepository<Products, Long> {
     public ProductIdProjectionInterface selectProductDetl(@Param(value = "id") Long id);
 
     // 그룹 코드별 조회
-    public List<ProductIdProjectionInterface> findByCategory(int category);
+    public List<ProductIdProjectionInterface> findByCategory(Category category);
 
     // 이름으로 상품 조회하기
     public List<ProductIdProjectionInterface> findByNameContains(String name);

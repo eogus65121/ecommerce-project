@@ -18,6 +18,6 @@ public class ProductsDto implements Serializable {
     private int price;
     private LocalDate createdDt;
     private String createUsrId;
-    private int category;
+    private Category category;
     private String remark;
 }
