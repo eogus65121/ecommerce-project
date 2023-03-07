@@ -3,6 +3,7 @@ package com.done.ecommerce.domain.repository;
 
 import com.done.ecommerce.products.domain.entity.Category;
 import com.done.ecommerce.products.domain.repository.CategoryRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.test.context.TestPropertySource;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -45,5 +48,18 @@ public class CategoryRepositoryTest {
         assertThat(name).isEqualTo("categoryName3");
         assertThat(id).isEqualTo(requestId);
 
+    }
+
+    @Test
+    void id_카테고리_조회_실패(){
+        //given
+        long requestId = 15l;
+
+        //when
+        Optional<Category> selectCategory = categoryRepository.findCategoryById(requestId);
+
+        Assertions.assertThrows(Exception.class, () -> {
+            selectCategory.orElseThrow(() -> new Exception());
+        });
     }
 }
