@@ -62,4 +62,20 @@ public class CategoryRepositoryTest {
             selectCategory.orElseThrow(() -> new Exception());
         });
     }
+
+    @Test
+    void name_카테고리_조회_성공(){
+        //given
+        String requestName = "categoryName4";
+
+        //when
+        Optional<Category> selectCategory = categoryRepository.findCategoryByCategoryName(requestName);
+        Long id = selectCategory.get().getId();
+        String name = selectCategory.get().getCategoryName();
+
+        //then
+        assertThat(id).isEqualTo(4l);
+        assertThat(name).isEqualTo(requestName);
+
+    }
 }
