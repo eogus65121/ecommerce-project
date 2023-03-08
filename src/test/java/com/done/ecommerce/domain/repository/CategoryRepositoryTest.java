@@ -78,4 +78,18 @@ public class CategoryRepositoryTest {
         assertThat(name).isEqualTo(requestName);
 
     }
+    @Test
+    void name_카테고리_조회_실패(){
+        //given
+        String requestName = "categoryName20";
+
+        //when
+        Optional<Category> selectCategory = categoryRepository.findCategoryByCategoryName(requestName);
+
+        //then
+        Assertions.assertThrows(Exception.class, () -> {
+            selectCategory.orElseThrow(() -> new Exception());
+        });
+
+    }
 }
