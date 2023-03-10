@@ -4,6 +4,7 @@ import com.done.ecommerce.users.domain.entity.Users;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
 import com.done.ecommerce.users.domain.repository.UserRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -125,7 +127,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void findByUserId_Test(){
+    public void findByUserId_성공_테스트(){
         // given
         String id = "id4";
         String id2 = "id44";
@@ -138,5 +140,18 @@ public class UserRepositoryTest {
         assertThat(flag).isEqualTo(false);
         assertThat(flag2).isEqualTo(true);
 
+    }
+
+    @Test
+    public void findByUserId_실패_테스트(){
+        //given
+        String id = "idd4";
+
+        //when
+        Optional<Users> selectUsers = userRepository.findByUserId(id);
+
+        Assertions.assertThrows(Exception.class, () -> {
+            selectUsers.orElseThrow(() -> new Exception());
+        });
     }
 }
