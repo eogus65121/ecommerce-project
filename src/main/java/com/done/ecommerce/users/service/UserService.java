@@ -1,5 +1,7 @@
 package com.done.ecommerce.users.service;
 
+import com.done.ecommerce.users.domain.entity.Users;
+import com.done.ecommerce.users.dto.AddressRequest;
 import com.done.ecommerce.users.dto.LoginReq;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
@@ -16,5 +18,7 @@ public interface UserService {
     public void updateUserPwdByUserId(String userId, String userPwd);
     // id로 사용자 찾기
     public UserDto findByUserId(String userId);
+    // 사용자 주소 셋팅
+    public void setUserAddress(Users users, AddressRequest addressRequest);
 
 }

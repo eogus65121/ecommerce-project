@@ -2,6 +2,8 @@ package com.done.ecommerce.users.controller;
 
 import com.done.ecommerce.common.annotation.LoginRequired;
 import com.done.ecommerce.common.annotation.LoginUser;
+import com.done.ecommerce.users.domain.entity.Users;
+import com.done.ecommerce.users.dto.AddressRequest;
 import com.done.ecommerce.users.dto.LoginReq;
 import com.done.ecommerce.users.dto.SaveUserDto;
 import com.done.ecommerce.users.dto.UserDto;
@@ -61,6 +63,15 @@ public class UserController {
         return new ResponseEntity<>(profileResponse, HttpStatus.OK);
     }
 
+    @LoginRequired
+    @PutMapping(value="/my-profile")
+    public HttpStatus setUserAddress(@LoginUser Users users, @RequestBody AddressRequest addressRequest){
+
+        userService.setUserAddress(users, addressRequest);
+        return HttpStatus.OK;
+    }
+
+
     /**
      * 비밀번호 변경
      */
@@ -101,7 +112,7 @@ public class UserController {
      * 로그아웃
      */
     @LoginRequired
-    @CacheEvict(value="LOGOUT_DELETE_CAHCE")
+//    @CacheEvict(value="LOGOUT_DELETE_CAHCE")
     @PostMapping (value="/logout")
     public HttpStatus logout(HttpServletRequest request, HttpSession session){
         // 로그인 Session이 없는 경우 예외처리
