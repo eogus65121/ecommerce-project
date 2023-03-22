@@ -22,22 +22,22 @@ public class Users extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String name;    // 이름
 
     @Column(nullable = false)
-    private String userId;
+    private String userId;  // ID
 
     @Column(nullable = false)
-    private String userPwd;
+    private String userPwd; // PWD
 
     @Column(nullable = false)
-    private String phone;
+    private String phone;   // 휴대폰 번호
 
     @Column(nullable = false)
-    private int role;
+    private int role;       // 역할
 
     @Embedded
-    private Address address;
+    private Address address;    // 사용자 주소
 
     @Builder
     public Users(String name, String userId, String userPwd, String phone, int role, Address address){
@@ -49,6 +49,7 @@ public class Users extends BaseTimeEntity {
         this.address = address;
     }
 
+    // 주소 업데이트
     public void setAddress(AddressRequest addressRequest){
         this.address = addressRequest.toAddress();
     }

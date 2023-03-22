@@ -10,14 +10,19 @@ public interface UserService {
 
     // 로그인
     public UserDto loginUser(LoginReq reqDto);
+
     // user id 중복확인
     public boolean isDuplicatedUserId(String userId);
+
     // 신규 회원 등록
     public void saveUser(SaveUserDto saveUserDto);
+
     // 사용자 pwd 변경
     public void updateUserPwdByUserId(String userId, String userPwd);
+
     // id로 사용자 찾기
     public UserDto findByUserId(String userId);
+
     // 사용자 주소 셋팅
     public void setUserAddress(Users users, AddressRequest addressRequest);
 
